@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  portable-make-build:
+    image: portable-make-build:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
