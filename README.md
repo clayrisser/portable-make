@@ -2,6 +2,14 @@
 
 > cross platform portable make binary
 
+## Compile
+
+```sh
+git clone git@github.com:codejamninja/portable-make.git
+cd portable-make
+make
+```
+
 ## Installation
 
 ```sh
