@@ -15,9 +15,15 @@ make
 ### Linux
 
 ```sh
-curl -LO https://github.com/codejamninja/portable-make/releases/download/3.75/make-3.75.tar.gz
-tar -xzvf make-3.75.tar.gz
-mkdir -p /usr/local/bin
-mv make /usr/local/bin
-rm -rf make-3.75.tar.gz
+curl -LO https://github.com/codejamninja/portable-make/releases/download/3.75/make-linux-3.75.tar.gz
+tar -xzvf make-linux-3.75.tar.gz
+make --version
+```
+
+### Windows
+
+```sh
+curl -LO https://github.com/codejamninja/portable-make/releases/download/3.75/make-win32-3.75.tar.gz
+tar -xzvf make-win32-3.75.tar.gz
+make --version
 ```
