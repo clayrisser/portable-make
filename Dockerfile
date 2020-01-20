@@ -1,14 +1,14 @@
 FROM alpine
 
-ARG VERSION=4.2
-ENV VERSION=${VERSION}
-
 RUN apk add --no-cache \
   build-base \
   curl \
   make
 
 WORKDIR /tmp/app
+
+ARG VERSION=4.2
+ENV VERSION=${VERSION}
 
 RUN curl -LO https://ftp.gnu.org/gnu/make/make-${VERSION}.tar.gz
 RUN echo https://ftp.gnu.org/gnu/make/make-${VERSION}.tar.gz

@@ -1,4 +1,4 @@
-VERSION := 3.81
+VERSION := 3.75
 
 .EXPORT_ALL_VARIABLES:
 
@@ -6,7 +6,7 @@ VERSION := 3.81
 all: build
 
 .PHONY: build
-build: build-linux build-windows
+build: build-linux build-win32
 
 .PHONY: build-linux
 build-linux: make-linux-${VERSION}.tar.gz
@@ -14,18 +14,19 @@ make-linux-${VERSION}.tar.gz:
 	@docker-compose -f docker-build.yaml build
 	@docker run --rm -v $(PWD):/opt/app portable-make-build:latest
 
-.PHONY: build-windows
-build-windows: make-windows-${VERSION}.tar.gz
-make-windows-${VERSION}.tar.gz:
-	-@rm -rf build-windows || true
-	@mkdir -p build-windows
-	@cd build-windows && \
-		curl -LO https://phoenixnap.dl.sourceforge.net/project/gnuwin32/make/${VERSION}/make-${VERSION}-bin.zip
-	@cd build-windows && \
-		unzip make-${VERSION}-bin.zip
-	@cd build-windows/bin && tar -czvf make-windows-${VERSION}.tar.gz make.exe
-	@mv build-windows/bin/make-windows-${VERSION}.tar.gz .
-	-@rm -rf build-windows || true
+.PHONY: build-win32
+build-win32: make-win32-${VERSION}.tar.gz
+make-win32-${VERSION}.tar.gz:
+	-@rm -rf build-win32 || true
+	@mkdir -p build-win32
+	@cd build-win32 && \
+		curl -LO https://steve.fi/Software/make/make.zip
+	@cd build-win32 && \
+		unzip make.zip
+	@cd build-win32 && \
+		tar -czvf make-win32-${VERSION}.tar.gz make.exe
+	@mv build-win32/make-win32-${VERSION}.tar.gz .
+	-@rm -rf build-win32 || true
 
 .PHONY: clean
 clean:
