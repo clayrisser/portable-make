@@ -12,10 +12,12 @@ make
 
 ## Installation
 
+### Linux
+
 ```sh
-curl -LO https://github.com/codejamninja/portable-make/releases/download/4.2/make-4.2.tar.gz
-tar -xzvf make-4.2.tar.gz
+curl -LO https://github.com/codejamninja/portable-make/releases/download/3.81/make-linux-3.81.tar.gz
+tar -xzvf make-linux-3.81.tar.gz
 mkdir -p /usr/local/bin
 mv make /usr/local/bin
-rm -rf make-4.2.tar.gz
+rm -rf make-linux-3.81.tar.gz
 ```
