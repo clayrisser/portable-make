@@ -8,9 +8,6 @@ RUN apk add --no-cache \
   curl \
   make
 
-COPY entrypoint.sh /usr/local/sbin/entrypoint
-RUN chmod +x /usr/local/sbin/entrypoint
-
 WORKDIR /tmp/app
 
 RUN curl -LO https://ftp.gnu.org/gnu/make/make-${VERSION}.tar.gz
@@ -23,7 +20,10 @@ RUN cd make-${VERSION} && \
 RUN cd make-${VERSION}/build && \
   make SHARED=0 CC='gcc -static'
 RUN cd make-${VERSION}/build && \
-  tar -czvf make-${VERSION}.tar.gz make
+  tar -czvf make-linux-${VERSION}.tar.gz make
+
+COPY entrypoint.sh /usr/local/sbin/entrypoint
+RUN chmod +x /usr/local/sbin/entrypoint
 
 WORKDIR /opt/app
 
