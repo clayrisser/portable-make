@@ -12,6 +12,8 @@ make
 
 ## Installation
 
+### Linux
+
 ```sh
 curl -LO https://github.com/codejamninja/portable-make/releases/download/3.75/make-3.75.tar.gz
 tar -xzvf make-3.75.tar.gz
