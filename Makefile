@@ -6,7 +6,28 @@ VERSION := 3.75
 all: build
 
 .PHONY: build
-build: build-linux build-win32
+build: build-darwin build-linux build-win32
+
+.PHONY: build-darwin
+build-darwin: make-darwin-${VERSION}.tar.gz
+make-darwin-${VERSION}.tar.gz:
+ifeq ($(shell uname), Darwin)
+	-@rm -rf build-darwin || true
+	@mkdir -p build-darwin
+	@cd build-darwin && curl -LO https://ftp.gnu.org/gnu/make/make-${VERSION}.tar.gz
+	@cd build-darwin && \
+		tar -xzvf make-${VERSION}.tar.gz && \
+	  rm -f make-${VERSION}.tar.gz
+	@cd build-darwin/make-${VERSION} && \
+		mkdir build && cd build && \
+		../configure
+	@cd build-darwin/make-${VERSION}/build && \
+		$(MAKE)
+	@cd build-darwin/make-${VERSION}/build && \
+		tar -czvf make-darwin-${VERSION}.tar.gz make
+	@mv build-darwin/make-${VERSION}/build/make-darwin-${VERSION}.tar.gz .
+	-@rm -rf build-darwin || true
+endif
 
 .PHONY: build-linux
 build-linux: make-linux-${VERSION}.tar.gz

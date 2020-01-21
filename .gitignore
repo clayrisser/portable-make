@@ -1,3 +1,4 @@
+/build-*
 /make
 /make*.tar.gz
 /make.exe
