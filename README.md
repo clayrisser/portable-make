@@ -1,5 +1,7 @@
 # portable-make
 
+![](assets/portable-make.png)
+
 > cross platform portable make binary
 
 ## Compile
